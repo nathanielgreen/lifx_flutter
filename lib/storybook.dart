@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
             name: 'Light Switch',
             builder: (_, k) {
               return LightSwitch(
-                power: k.boolean(label: 'Power'),
+                power: false,
                 text: k.text(label: 'Text', initial: 'Click me'),
                 onClick: () => print('onClick'),
                 onToggle: (val) => print('onToggle $val'),
