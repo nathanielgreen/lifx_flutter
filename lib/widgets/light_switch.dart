@@ -33,7 +33,8 @@ class _LightSwitchState extends State<LightSwitch> {
   Widget build(BuildContext context) => ElevatedButton(
         style: style,
         onPressed: () => widget.onClick(),
-        child: Row(children: [
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Text(widget.text),
           Switch(
             value: _power,

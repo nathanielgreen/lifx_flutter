@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
         children: [
           Story(
             name: 'Light Switch',
-            section: 'Buttons',
             builder: (_, k) {
               return LightSwitch(
                 power: k.boolean(label: 'Power'),
