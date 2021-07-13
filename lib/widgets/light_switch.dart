@@ -19,8 +19,13 @@ class LightSwitch extends StatefulWidget {
 }
 
 class _LightSwitchState extends State<LightSwitch> {
-  final ButtonStyle style =
-      ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+  final ButtonStyle style = ElevatedButton.styleFrom(
+    textStyle: const TextStyle(fontSize: 20, color: Colors.blue),
+    primary: Colors.black,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(180.0),
+    ),
+  );
   late bool _power;
 
   @override
@@ -33,18 +38,23 @@ class _LightSwitchState extends State<LightSwitch> {
   Widget build(BuildContext context) => ElevatedButton(
         style: style,
         onPressed: () => widget.onClick(),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Text(widget.text),
-          Switch(
-            value: _power,
-            onChanged: (bool newValue) {
-              setState(() {
-                _power = newValue;
-                widget.onToggle(_power);
-              });
-            },
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(widget.text),
+              Switch(
+                value: _power,
+                onChanged: (bool newValue) {
+                  setState(() {
+                    _power = newValue;
+                    widget.onToggle(_power);
+                  });
+                },
+              ),
+            ],
           ),
-        ]),
+        ),
       );
 }
