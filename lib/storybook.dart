@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
@@ -13,14 +14,11 @@ class MyApp extends StatelessWidget {
             name: 'Light Switch',
             section: 'Buttons',
             builder: (_, k) {
-              var power = false;
               return LightSwitch(
-                power: k.boolean(label: 'Power', initial: power),
+                power: k.boolean(label: 'Power'),
                 text: k.text(label: 'Text', initial: 'Click me'),
                 onClick: () => print('onClick'),
-                onToggle: (val) {
-                  power = true;
-                },
+                onToggle: (val) => print('onToggle $val'),
               );
             },
           ),

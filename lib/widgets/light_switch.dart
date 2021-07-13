@@ -4,9 +4,9 @@ class LightSwitch extends StatefulWidget {
   final String text;
   final Function onClick;
   final Function(bool) onToggle;
-  bool power;
+  final bool power;
 
-  LightSwitch({
+  const LightSwitch({
     Key? key,
     required this.text,
     required this.onClick,
@@ -21,6 +21,13 @@ class LightSwitch extends StatefulWidget {
 class _LightSwitchState extends State<LightSwitch> {
   final ButtonStyle style =
       ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+  late bool _power;
+
+  @override
+  void initState() {
+    super.initState();
+    _power = widget.power;
+  }
 
   @override
   Widget build(BuildContext context) => ElevatedButton(
@@ -29,11 +36,11 @@ class _LightSwitchState extends State<LightSwitch> {
         child: Row(children: [
           Text(widget.text),
           Switch(
-            value: widget.power,
-            onChanged: (val) {
-              widget.onToggle(val);
+            value: _power,
+            onChanged: (bool newValue) {
               setState(() {
-                widget.power = val;
+                _power = newValue;
+                widget.onToggle(_power);
               });
             },
           ),
