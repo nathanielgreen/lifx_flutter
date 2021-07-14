@@ -39,7 +39,7 @@ class _LightSwitchState extends State<LightSwitch> {
         style: style,
         onPressed: () => widget.onClick(),
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
