@@ -3,6 +3,6 @@ import 'package:flutter/material.dart';
 class TopBar extends AppBar {
   TopBar()
       : super(
-          title: const Text("test"),
+          title: const Text("LIFX"),
         );
 }

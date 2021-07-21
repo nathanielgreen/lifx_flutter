@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
+import 'package:lifx/locations/lights_location.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({required this.beamerKey});
@@ -12,7 +13,7 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   late BeamerDelegate _beamerDelegate;
-  final int _currentIndex = 0;
+  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -22,10 +23,13 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
+    _currentIndex =
+        _beamerDelegate.currentBeamLocation is LightsLocation ? 0 : 1;
     return BottomNavigationBar(
       currentIndex: _currentIndex,
       items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.lightbulb_outline), label: "Lights"),
         BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings"),
       ],
       onTap: (int index) =>

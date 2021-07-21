@@ -1,39 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
-import 'package:lifx/screens/settings_screen.dart';
-import './screens/home_screen.dart';
+import 'package:lifx/locations/lights_location.dart';
+import 'package:lifx/locations/settings_location.dart';
 import './widgets/global/bottom_bar.dart';
 
 void main() {
   runApp(MyApp());
-}
-
-class SettingsLocation extends BeamLocation {
-  @override
-  List<String> get pathBlueprints => ['/settings'];
-
-  @override
-  List<BeamPage> buildPages(BuildContext context, BeamState state) => [
-        BeamPage(
-          key: const ValueKey('settings'),
-          title: 'settings',
-          child: SettingsScreen(),
-        ),
-      ];
-}
-
-class LightsLocation extends BeamLocation {
-  @override
-  List<String> get pathBlueprints => ['/lights/:light'];
-
-  @override
-  List<BeamPage> buildPages(BuildContext context, BeamState state) => [
-        BeamPage(
-          key: const ValueKey('lights'),
-          title: 'Lights',
-          child: HomeScreen(),
-        ),
-      ];
 }
 
 class MyApp extends StatelessWidget {
