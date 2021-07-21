@@ -21,7 +21,7 @@ class LightSwitch extends StatefulWidget {
 class _LightSwitchState extends State<LightSwitch> {
   final ButtonStyle style = ElevatedButton.styleFrom(
     textStyle: const TextStyle(fontSize: 20, color: Colors.blue),
-    primary: Colors.black,
+    primary: const Color(0xFF524f60),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(180.0),
     ),

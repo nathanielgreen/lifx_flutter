@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/global/bottom_bar.dart';
 import '../widgets/global/top_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +7,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: TopBar(),
       body: const Center(child: Text('Home')),
-      bottomNavigationBar: BottomBar(),
     );
   }
 }
