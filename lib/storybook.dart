@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-import './widgets/light_switch.dart';
+import './widgets/molecules/light_switch.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,10 +14,11 @@ class MyApp extends StatelessWidget {
             name: 'Light Switch',
             builder: (_, k) {
               return LightSwitch(
+                id: "1",
                 power: false,
                 text: k.text(label: 'Text', initial: 'Click me'),
                 onClick: () => print('onClick'),
-                onToggle: (val) => print('onToggle $val'),
+                onToggle: (id, power) => print('onToggle $id $power'),
               );
             },
           ),
