@@ -6,9 +6,11 @@ class LightList extends StatelessWidget {
   const LightList({
     Key? key,
     required this.futureLights,
+    required this.onToggle,
   }) : super(key: key);
 
   final Future<Iterable<Bulb>> futureLights;
+  final Future<void> Function(String, bool) onToggle;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +22,10 @@ class LightList extends StatelessWidget {
             children: snapshot.data!
                 .map(
                   (Bulb bulb) => LightSwitch(
+                      id: bulb.id,
                       text: bulb.label,
                       onClick: () => {},
-                      onToggle: (bool power) => {},
+                      onToggle: onToggle,
                       power: bulb.power == "on"),
                 )
                 .toList(),

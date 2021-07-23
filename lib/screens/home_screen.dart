@@ -16,6 +16,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return clientModel.client;
   }
 
+  Future<void> toggleLight(BuildContext context, String id,
+      {required bool power}) async {
+    final clientModel = Provider.of<LifxClientModel>(context, listen: false);
+    final client = clientModel.client;
+    client.setState(id, power: power ? "on" : "off");
+  }
+
   Future<Iterable<Bulb>> getLights(BuildContext context) async {
     return Provider.of<LifxClientModel>(context, listen: false)
         .client
@@ -33,7 +40,11 @@ class _HomeScreenState extends State<HomeScreen> {
         future: createClient(context),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return LightsTemplate(futureLights: getLights(context));
+            return LightsTemplate(
+                futureLights: getLights(context),
+                onToggle: (String id, bool power) async {
+                  await toggleLight(context, id, power: power);
+                });
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }

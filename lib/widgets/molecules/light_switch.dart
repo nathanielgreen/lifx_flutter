@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class LightSwitch extends StatefulWidget {
   final String text;
   final Function onClick;
-  final Function(bool) onToggle;
+  final Function(String, bool) onToggle;
   final bool power;
+  final String id;
 
   const LightSwitch({
     Key? key,
+    required this.id,
     required this.text,
     required this.onClick,
     required this.onToggle,
@@ -49,7 +51,7 @@ class _LightSwitchState extends State<LightSwitch> {
                 onChanged: (bool newValue) {
                   setState(() {
                     _power = newValue;
-                    widget.onToggle(_power);
+                    widget.onToggle(widget.id, _power);
                   });
                 },
               ),

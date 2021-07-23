@@ -7,16 +7,21 @@ class LightsTemplate extends StatelessWidget {
   const LightsTemplate({
     Key? key,
     required this.futureLights,
+    required this.onToggle,
   }) : super(key: key);
 
   final Future<Iterable<Bulb>> futureLights;
+  final Future<void> Function(String, bool) onToggle;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TopBar(),
       body: Center(
-        child: LightList(futureLights: futureLights),
+        child: LightList(
+          futureLights: futureLights,
+          onToggle: onToggle,
+        ),
       ),
     );
   }
