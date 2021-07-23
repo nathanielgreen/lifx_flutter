@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   flutter:
     sdk: flutter
+  lifx_http_api: ^0.0.3
   lint: ^1.5.3
   provider: ^5.0.0
   storybook_flutter: ^0.5.0+1
