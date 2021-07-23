@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifx_http_api/lifx_http_api.dart' show Bulb;
-import './light_switch.dart';
+import '../molecules/light_switch.dart';
 
 class LightList extends StatelessWidget {
   const LightList({

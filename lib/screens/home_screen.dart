@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifx_http_api/lifx_http_api.dart' show Bulb, Client;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../widgets/global/top_bar.dart';
-import '../widgets/light_list.dart';
+import '../widgets/templates/lights_template.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -28,11 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: TopBar(),
-      body: Center(
-        child: LightList(futureLights: getLights()),
-      ),
-    );
+    return LightsTemplate(futureLights: getLights());
   }
 }
