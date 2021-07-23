@@ -34,6 +34,7 @@ To view the component library run the Storybook with `flutter run lib/storybook.
 **App**
 
 - [Flutter](https://flutter.dev)
+- [LIFX HTTP API in Dart](https://pub.dev/documentation/lifx_http_api/) (Author)
 
 **Testing**
 
