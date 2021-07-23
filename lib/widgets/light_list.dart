@@ -18,11 +18,13 @@ class LightList extends StatelessWidget {
         if (snapshot.hasData) {
           return Column(
             children: snapshot.data!
-                .map((Bulb bulb) => LightSwitch(
-                    text: bulb.label,
-                    onClick: () => {},
-                    onToggle: (bool power) => {},
-                    power: bulb.connected))
+                .map(
+                  (Bulb bulb) => LightSwitch(
+                      text: bulb.label,
+                      onClick: () => {},
+                      onToggle: (bool power) => {},
+                      power: bulb.power == "on"),
+                )
                 .toList(),
           );
         } else if (snapshot.hasError) {
