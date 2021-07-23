@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 import 'package:lifx/locations/lights_location.dart';
 import 'package:lifx/locations/settings_location.dart';
+import 'package:lifx/providers/lifx_client_model.dart';
+import 'package:provider/provider.dart';
 import './widgets/global/bottom_bar.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => LifxClientModel()),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

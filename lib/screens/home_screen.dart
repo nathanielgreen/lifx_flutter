@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:lifx/providers/lifx_client_model.dart';
 import 'package:lifx_http_api/lifx_http_api.dart' show Bulb, Client;
-import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/templates/lights_template.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,15 +10,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  late final Client client;
+  Future<Client> createClient(BuildContext context) async {
+    final clientModel = Provider.of<LifxClientModel>(context, listen: false);
+    await clientModel.createClient(context);
+    return clientModel.client;
+  }
 
-  Future<Iterable<Bulb>> getLights() async {
-    final SharedPreferences prefs = await _prefs;
-    final key = prefs.getString("LIFX_API_KEY");
-    if (key == null) throw Exception("No API key was found");
-    final client = Client(key);
-    return client.listLights();
+  Future<Iterable<Bulb>> getLights(BuildContext context) async {
+    return Provider.of<LifxClientModel>(context, listen: false)
+        .client
+        .listLights();
   }
 
   @override
@@ -27,6 +29,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return LightsTemplate(futureLights: getLights());
+    return FutureBuilder(
+        future: createClient(context),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return LightsTemplate(futureLights: getLights(context));
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return const CircularProgressIndicator();
+        });
   }
 }
