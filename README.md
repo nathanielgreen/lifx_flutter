@@ -6,10 +6,10 @@ An app to control your LIFX smart bulbs using the LIFX HTTP API. Built with Flut
 
 # Install & Run
 
-## Prerequesites
+## Prerequisites
 
 - [Flutter](https://flutter.dev/)
-- [A LIFX Cloud Account](https://cloud.lifx.com/)
+- An API key from your [LIFX Cloud Account](https://cloud.lifx.com/) 
 
 ## Install
 
