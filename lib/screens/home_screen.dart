@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lifx_http_api/lifx_http_api.dart' show Bulb, Client;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/global/top_bar.dart';
+import '../widgets/light_list.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -8,13 +10,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final client = Client("");
-  late Future<Iterable<Bulb>> futureLights;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  late final Client client;
+
+  Future<Iterable<Bulb>> getLights() async {
+    final SharedPreferences prefs = await _prefs;
+    final key = prefs.getString("LIFX_API_KEY");
+    if (key == null) throw Exception("No API key was found");
+    final client = Client(key);
+    return client.listLights();
+  }
 
   @override
   void initState() {
     super.initState();
-    futureLights = client.listLights();
   }
 
   @override
@@ -22,19 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: TopBar(),
       body: Center(
-        child: FutureBuilder<Iterable<Bulb>>(
-          future: futureLights,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text(snapshot.data.toString());
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-
-            // By default, show a loading spinner.
-            return const CircularProgressIndicator();
-          },
-        ),
+        child: LightList(futureLights: getLights()),
       ),
     );
   }
