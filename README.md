@@ -1,16 +1,52 @@
-# lifx
+# LIFX Flutter
 
-A new Flutter project.
+[![style: lint](https://img.shields.io/badge/style-lint-4BC0F5.svg)](https://pub.dev/packages/lint)
 
-## Getting Started
+An app to control your LIFX smart bulbs using the LIFX HTTP API. Built with Flutter.
 
-This project is a starting point for a Flutter application.
+# Install & Run
 
-A few resources to get you started if this is your first Flutter project:
+## Prerequesites
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- [Flutter](https://flutter.dev/)
+- [A LIFX Cloud Account](https://cloud.lifx.com/)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Install
+
+- Clone:
+  - SSH: `git clone git@github.com:nathanielgreen/lifx_flutter.git`
+  - HTTPS: `git clone https://github.com/nathanielgreen/lifx_flutter.git`
+- Navigate to directory: `cd lifx_flutter`
+- Install dependencies: `flutter pub get`
+
+## Run
+
+The app supports Linux and Web platforms.
+
+- Run
+  - Linux: `flutter run -d linux`
+  - Chrome: `flutter run -d chrome`
+
+To view the component library run the Storybook with `flutter run lib/storybook.dart`.
+
+# Technologies
+
+**App**
+
+- [Flutter](https://flutter.dev)
+
+**Testing**
+
+- [Storybook (Flutter)](https://pub.dev/packages/storybook_flutter)
+
+**Linting and Formatting**
+
+- [dart lint](https://pub.dev/packages/lint)
+
+# System Design
+
+The component structure follows [Atomic Design by Brad
+Frost](https://atomicdesign.bradfrost.com/).
+
+The code structure rules follow the
+[Effective Dart style guide](https://dart.dev/guides/language/effective-dart/style).
