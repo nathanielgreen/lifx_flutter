@@ -1,8 +1,9 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
-import 'package:storybook_flutter/storybook_flutter.dart';
+import 'package:storybook_flutter/storybook_flutter.dart' show Story, Storybook;
 
-import './widgets/molecules/light_switch.dart';
+import 'package:lifx/widgets/molecules/light_switch.dart'
+    show LightSwitchWidget;
 
 void main() => runApp(MyApp());
 
@@ -13,12 +14,11 @@ class MyApp extends StatelessWidget {
           Story(
             name: 'Light Switch',
             builder: (_, k) {
-              return LightSwitch(
-                id: "1",
-                power: false,
+              return LightSwitchWidget(
+                power: k.boolean(label: 'Power'),
                 text: k.text(label: 'Text', initial: 'Click me'),
                 onClick: () => print('onClick'),
-                onToggle: (id, power) => print('onToggle $id $power'),
+                onToggle: (power) => print('onToggle $power'),
               );
             },
           ),
