@@ -10,7 +10,7 @@ class LifxClientModel extends ChangeNotifier {
     client = await LifxClientService().initializeClient();
     final Iterable<Bulb> lights = await client.listLights();
     final lightsList = lights.toList();
-    bulbs.addAll(lightsList);
+    bulbs = lightsList;
     notifyListeners();
   }
 
