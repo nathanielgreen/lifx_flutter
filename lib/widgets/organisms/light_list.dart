@@ -11,32 +11,23 @@ class LightList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Bulb> bulbs = context.watch<LifxClientModel>().bulbs;
-    if (bulbs.isEmpty) return const Text("No bulbs found");
-    return LightListWidget(bulbs: bulbs);
-  }
-}
-
-class LightListWidget extends StatelessWidget {
-  const LightListWidget({
-    Key? key,
-    required this.bulbs,
-  }) : super(key: key);
-
-  final List<Bulb> bulbs;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 32),
-      child: ListView(
-        children: bulbs
-            .map(
-              (Bulb bulb) => LightSwitch(
-                id: bulb.id,
-              ),
-            )
-            .toList(),
+    final setLightPower = Provider.of<LifxClientModel>(context).setLightPower;
+    return Consumer<LifxClientModel>(
+      builder: (_, lifx, __) => Container(
+        margin: const EdgeInsets.symmetric(horizontal: 32),
+        child: ListView(
+          children: lifx.bulbs
+              .map(
+                (Bulb bulb) => LightSwitch(
+                  text: bulb.label,
+                  onClick: () => print('onClick'),
+                  onToggle: (bool power) =>
+                      setLightPower(bulb.id, power: power),
+                  power: bulb.power == "on",
+                ),
+              )
+              .toList(),
+        ),
       ),
     );
   }
