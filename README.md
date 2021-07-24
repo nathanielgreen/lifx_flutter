@@ -35,6 +35,9 @@ To view the component library run the Storybook with `flutter run lib/storybook.
 
 - [Flutter](https://flutter.dev)
 - [LIFX HTTP API in Dart](https://pub.dev/documentation/lifx_http_api/) (Author)
+- [Beamer (Routing)](https://pub.dev/packages/beamer)
+- [Provider (State Management)](https://pub.dev/packages/provider)
+- [Shared Preferences (Local storage)](https://pub.dev/packages/shared_preferences)
 
 **Testing**
 
