@@ -13,7 +13,7 @@ class LightSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Bulb? bulb = Provider.of<LifxClientModel>(context).getLight(id);
+    final Bulb? bulb = Provider.of<LifxClientModel>(context).getLight(id);
     final setPower = Provider.of<LifxClientModel>(context).setLightPower;
     if (bulb == null) return const Text("No bulb with that id found");
     return LightSwitchWidget(
