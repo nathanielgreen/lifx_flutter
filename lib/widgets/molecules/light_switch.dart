@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:beamer/beamer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lifx_http_api/lifx_http_api.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,10 @@ class LightSwitch extends StatelessWidget {
     if (bulb == null) return const Text("No bulb with that id found");
     return LightSwitchWidget(
       text: bulb.label,
-      onClick: () => print('hi'),
+      onClick: () => Beamer.of(context).beamToNamed(
+        '/lights/${bulb.id}',
+        data: {'lightId': bulb.id},
+      ),
       onToggle: (bool power) {
         setPower(bulb.id, power: power);
         bulb.power = power ? "on" : "off";
