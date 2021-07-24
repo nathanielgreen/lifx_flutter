@@ -36,9 +36,10 @@ class LightSwitch extends StatelessWidget {
                 Transform.scale(
                   scale: 0.8,
                   child: CupertinoSwitch(
-                      activeColor: Theme.of(context).accentColor,
-                      value: power,
-                      onChanged: onToggle),
+                    activeColor: Theme.of(context).accentColor,
+                    value: power,
+                    onChanged: onToggle,
+                  ),
                 ),
               ],
             ),

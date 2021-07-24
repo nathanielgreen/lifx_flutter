@@ -13,11 +13,13 @@ class LightScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Bulb? bulb = Provider.of<LifxClientModel>(context).getLight(id);
-    if (bulb == null) return const Text("Bulb not found");
-    return Scaffold(
-      appBar: AppBar(title: Text(bulb.label)),
-      body: Text("${bulb.id} ${bulb.label}"),
-    );
+    return Consumer<LifxClientModel>(builder: (_, lifx, __) {
+      final Bulb? bulb = lifx.bulbs.firstWhere((bulb) => bulb.id == id);
+      if (bulb == null) return const Text("No bulb");
+      return Scaffold(
+        appBar: AppBar(title: Text(bulb.label)),
+        body: Text("${bulb.id} ${bulb.label}"),
+      );
+    });
   }
 }

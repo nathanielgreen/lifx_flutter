@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
-import 'package:lifx/screens/home_screen.dart';
+import 'package:lifx/screens/lights_screen.dart';
 import 'package:lifx/screens/light_screen.dart';
 
 class LightsLocation extends BeamLocation {
@@ -12,7 +12,14 @@ class LightsLocation extends BeamLocation {
         BeamPage(
           key: const ValueKey('lights'),
           title: 'Lights',
-          child: HomeScreen(),
+          child: LightsScreen(),
         ),
+        if (state.pathParameters.containsKey('lightId'))
+          BeamPage(
+            key: ValueKey('book-${state.pathParameters['lightId']}'),
+            child: LightScreen(
+              id: state.pathParameters['lightId']!,
+            ),
+          )
       ];
 }

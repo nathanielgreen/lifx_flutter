@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:beamer/beamer.dart';
 import 'package:lifx/providers/lifx_client_model.dart';
 import 'package:lifx_http_api/lifx_http_api.dart' show Bulb;
 import 'package:provider/provider.dart';
@@ -20,7 +21,7 @@ class LightList extends StatelessWidget {
               .map(
                 (Bulb bulb) => LightSwitch(
                   text: bulb.label,
-                  onClick: () => print('onClick'),
+                  onClick: () => context.beamToNamed('/lights/${bulb.id}'),
                   onToggle: (bool power) =>
                       setLightPower(bulb.id, power: power),
                   power: bulb.power == "on",
