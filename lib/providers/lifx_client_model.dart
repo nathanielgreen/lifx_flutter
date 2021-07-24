@@ -25,4 +25,11 @@ class LifxClientModel extends ChangeNotifier {
     client.setState(id, power: power ? "on" : "off");
     notifyListeners();
   }
+
+  void setLightBrightness(String id, {required double brightness}) {
+    final Bulb bulb = bulbs.firstWhere((bulb) => bulb.id == id);
+    bulb.brightness = brightness;
+    client.setState(id, brightness: brightness);
+    notifyListeners();
+  }
 }

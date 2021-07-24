@@ -26,7 +26,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^2.1.0
-  lifx_http_api: ^0.0.5
+  lifx_http_api: ^0.0.6
   lint: ^1.5.3
   provider: ^5.0.0
   shared_preferences: ^2.0.6
