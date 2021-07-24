@@ -3,6 +3,7 @@ import 'package:beamer/beamer.dart';
 import 'package:lifx/locations/lights_location.dart';
 import 'package:lifx/locations/settings_location.dart';
 import 'package:lifx/providers/lifx_client_model.dart';
+import 'package:lifx/styles/theme.dart' show theme;
 import 'package:provider/provider.dart';
 import './widgets/global/bottom_bar.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         '*': (context, state) {
           final beamerKey = GlobalKey<BeamerState>();
           return Scaffold(
+            backgroundColor: Theme.of(context).primaryColor,
             body: Beamer(
               key: beamerKey,
               routerDelegate: BeamerDelegate(
@@ -52,9 +54,7 @@ class MyApp extends StatelessWidget {
       ),
       routerDelegate: routerDelegate,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-      ),
+      theme: theme(),
     );
   }
 }

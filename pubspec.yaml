@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   flutter:
     sdk: flutter
+  google_fonts: ^2.1.0
   lifx_http_api: ^0.0.5
   lint: ^1.5.3
   provider: ^5.0.0

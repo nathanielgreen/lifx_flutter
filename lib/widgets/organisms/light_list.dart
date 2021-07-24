@@ -27,14 +27,17 @@ class LightListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: bulbs
-          .map(
-            (Bulb bulb) => LightSwitch(
-              id: bulb.id,
-            ),
-          )
-          .toList(),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 32),
+      child: ListView(
+        children: bulbs
+            .map(
+              (Bulb bulb) => LightSwitch(
+                id: bulb.id,
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }

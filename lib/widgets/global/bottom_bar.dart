@@ -26,6 +26,8 @@ class _BottomBarState extends State<BottomBar> {
     _currentIndex =
         _beamerDelegate.currentBeamLocation is LightsLocation ? 0 : 1;
     return BottomNavigationBar(
+      backgroundColor: Theme.of(context).primaryColor,
+      selectedItemColor: Coors
       currentIndex: _currentIndex,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
