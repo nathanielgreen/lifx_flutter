@@ -59,7 +59,7 @@ The code structure rules follow the
 
 <details>
   <summary>Lights Page</summary> 
-  <img src="./docs/lightscreen.png" />
+  <img src="./docs/homescreen.png.png" />
 </details>
 
 <details>
