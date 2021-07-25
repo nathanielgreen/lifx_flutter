@@ -34,9 +34,30 @@ class LightScreen extends StatelessWidget {
                     alignment: Alignment.center,
                   ),
                 ),
-                BulbDetail(label: "Label", value: bulb.label),
-                BulbDetail(label: "ID", value: bulb.id),
-                BulbDetail(label: "Kelvin", value: "${bulb.color.kelvin}K"),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: BulbDetail(
+                    label: "Label",
+                    value: bulb.label,
+                  ),
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: BulbDetail(
+                    label: "ID",
+                    value: bulb.id,
+                  ),
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: BulbDetail(
+                    label: "Kelvin",
+                    value: "${bulb.color.kelvin}K",
+                  ),
+                ),
               ],
             ),
           ),

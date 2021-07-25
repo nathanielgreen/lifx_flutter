@@ -11,11 +11,24 @@ class BulbDetail extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Container(
-        height: 40,
-        width: 40,
-        child: Card(
-          child: Text("$label: $value"),
+  Widget build(BuildContext context) => Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Text(
+                "$label: ",
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                value,
+                style: const TextStyle(color: Colors.black),
+              ),
+            ],
+          ),
         ),
       );
 }
