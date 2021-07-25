@@ -54,3 +54,15 @@ Frost](https://atomicdesign.bradfrost.com/).
 
 The code structure rules follow the
 [Effective Dart style guide](https://dart.dev/guides/language/effective-dart/style).
+
+# Screenshots
+
+<details>
+  <summary>Lights Page</summary> 
+  <img src="./docs/lightscreen.png" />
+</details>
+
+<details>
+  <summary>Light Detail Page</summary> 
+  <img src="./docs/lightscreen.png" />
+</details>
