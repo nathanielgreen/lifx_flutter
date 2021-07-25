@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
+import 'package:provider/provider.dart';
 import 'package:lifx/providers/lifx_client_model.dart';
 import 'package:lifx/widgets/atoms/group_header.dart';
-import 'package:provider/provider.dart';
-import '../molecules/light_switch.dart';
+import 'package:lifx/widgets/molecules/light_switch.dart';
 
 class LightList extends StatelessWidget {
   const LightList({

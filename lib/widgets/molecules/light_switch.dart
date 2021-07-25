@@ -52,14 +52,11 @@ class LightSwitch extends StatelessWidget {
                     ),
                   ),
                 ]),
-                Transform.scale(
-                  scale: 0.8,
-                  child: Switch(
-                    activeColor: Theme.of(context).primaryColor,
-                    inactiveThumbColor: Theme.of(context).accentColor,
-                    value: power,
-                    onChanged: onToggle,
-                  ),
+                Switch(
+                  activeColor: Theme.of(context).primaryColor,
+                  inactiveThumbColor: Theme.of(context).accentColor,
+                  value: power,
+                  onChanged: onToggle,
                 ),
               ],
             ),

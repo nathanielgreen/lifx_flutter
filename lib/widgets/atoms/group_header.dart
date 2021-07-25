@@ -3,15 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 
 class GroupHeader extends StatelessWidget {
   final String text;
+  final Alignment alignment;
 
   const GroupHeader({
     Key? key,
     required this.text,
+    this.alignment = Alignment.centerLeft,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Align(
-        alignment: Alignment.centerLeft,
+        alignment: alignment,
         child: Container(
           margin: const EdgeInsets.only(top: 30),
           child: Text(

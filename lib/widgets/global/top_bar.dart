@@ -5,6 +5,6 @@ import 'package:lifx/constants/style.dart';
 AppBar topBar(String text) => AppBar(
       title: ScreenHeader(text: text),
       centerTitle: true,
-      backgroundColor: CustomColors.canvas,
+      backgroundColor: CustomColors.paleYellow,
       elevation: 0,
     );
