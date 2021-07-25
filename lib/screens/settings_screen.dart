@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:beamer/beamer.dart';
 import '../widgets/atoms/button.dart';
 import '../widgets/global/top_bar.dart';
 
@@ -61,8 +62,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               TextField(
                 controller: textController,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    focusColor: Theme.of(context).accentColor,
                     hintText: 'Enter a search term'),
               ),
               Container(
@@ -71,7 +73,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Button(
-                      onClick: () => setKey(textController.text),
+                      onClick: () {
+                        setKey(textController.text);
+                        Beamer.of(context).beamToNamed('lights');
+                      },
                       text: 'Set LIFX API key',
                     ),
                     Button(
