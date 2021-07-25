@@ -21,14 +21,14 @@ class LightSwitch extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             textStyle: const TextStyle(fontSize: 20, color: Colors.blue),
-            primary: const Color(0xFF524f60),
+            primary: const Color(0xFF202224),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(180.0),
+              borderRadius: BorderRadius.circular(18.0),
             ),
           ),
           onPressed: onClick,
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 26),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

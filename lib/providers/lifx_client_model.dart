@@ -14,6 +14,21 @@ class LifxClientModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<BulbGroup> get bulbsByGroup {
+    final Set<String> groupNames =
+        Set.from(bulbs.map((bulb) => bulb.group.name));
+    final bulbGroups = groupNames
+        .map((groupName) => BulbGroup(name: groupName, bulbs: []))
+        .toList();
+
+    for (final BulbGroup group in bulbGroups) {
+      final Iterable<Bulb> matchingBulbs =
+          bulbs.where((Bulb bulb) => bulb.group.name == group.name);
+      group.bulbs.addAll(matchingBulbs.toList());
+    }
+    return bulbGroups;
+  }
+
   Bulb? getLight(String id) {
     final Bulb bulb = bulbs.firstWhere((bulb) => bulb.id == id);
     return bulb;
@@ -32,4 +47,11 @@ class LifxClientModel extends ChangeNotifier {
     client.setState(id, brightness: brightness);
     notifyListeners();
   }
+}
+
+class BulbGroup {
+  final String name;
+  final List<Bulb> bulbs;
+
+  BulbGroup({required this.name, required this.bulbs});
 }

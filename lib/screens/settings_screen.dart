@@ -47,7 +47,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 future: getKey(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Text(snapshot.data.toString());
+                    return SelectableText(snapshot.data.toString());
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");
                   }

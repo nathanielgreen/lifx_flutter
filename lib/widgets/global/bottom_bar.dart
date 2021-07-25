@@ -27,11 +27,19 @@ class _BottomBarState extends State<BottomBar> {
         _beamerDelegate.currentBeamLocation is LightsLocation ? 0 : 1;
     return BottomNavigationBar(
       backgroundColor: Theme.of(context).primaryColor,
+      fixedColor: Theme.of(context).accentColor,
       currentIndex: _currentIndex,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-            icon: Icon(Icons.lightbulb_outline), label: "Lights"),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings"),
+            icon: Icon(Icons.lightbulb),
+            label: "All lights",
+            backgroundColor: Color(0xff202224)),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: "Settings",
+            backgroundColor: Color(0xff202224)),
       ],
       onTap: (int index) =>
           _beamerDelegate.beamToNamed(index == 0 ? '/lights' : '/settings'),

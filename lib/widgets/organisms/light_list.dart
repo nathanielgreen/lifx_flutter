@@ -17,19 +17,38 @@ class LightList extends StatelessWidget {
       builder: (_, lifx, __) => Container(
         margin: const EdgeInsets.symmetric(horizontal: 32),
         child: ListView(
-          children: lifx.bulbs
-              .map(
-                (Bulb bulb) => LightSwitch(
-                  text: bulb.label,
-                  onClick: () => context.beamToNamed('/lights/${bulb.id}'),
-                  onToggle: (bool power) =>
-                      setLightPower(bulb.id, power: power),
-                  power: bulb.power == "on",
-                ),
-              )
-              .toList(),
+          children: lifx.bulbsByGroup.map((group) {
+            return Column(
+              children: [
+                Text(group.name),
+                ...group.bulbs
+                    .map(
+                      (bulb) => LightSwitch(
+                        text: bulb.label,
+                        power: bulb.power == "on",
+                        onClick: () => print('hi'),
+                        onToggle: (bool power) =>
+                            setLightPower(bulb.id, power: power),
+                      ),
+                    )
+                    .toList(),
+              ],
+            );
+          }).toList(),
         ),
       ),
     );
   }
 }
+
+/* children: lifx.bulbs */
+/*     .map( */
+/*       (Bulb bulb) => LightSwitch( */
+/*         text: bulb.label, */
+/*         onClick: () => context.beamToNamed('/lights/${bulb.id}'), */
+/*         onToggle: (bool power) => */
+/*             setLightPower(bulb.id, power: power), */
+/*         power: bulb.power == "on", */
+/*       ), */
+/*     ) */
+/*     .toList(), */

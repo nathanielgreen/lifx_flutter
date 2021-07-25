@@ -9,6 +9,7 @@ class LightsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Provider.of<LifxClientModel>(context, listen: false).initializeLights();
     return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: TopBar(),
       body: const Center(
         child: LightList(),
