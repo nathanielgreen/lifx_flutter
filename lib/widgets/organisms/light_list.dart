@@ -39,9 +39,12 @@ class LightList extends StatelessWidget {
                 ),
               );
             }).toList())
-          : const Center(
-              child: Text(
-                  "No bulbs available. Check you've added your API Key in Settings"),
+          : Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 30),
+                child: const Text(
+                    "No bulbs available. Check you've added your API Key in Settings"),
+              ),
             ),
     );
   }
