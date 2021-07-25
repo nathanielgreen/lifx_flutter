@@ -35,10 +35,8 @@ class LightScreen extends StatelessWidget {
                   ),
                 ),
                 BulbDetail(label: "Label", value: bulb.label),
-                Text("Label: ${bulb.label}"),
-                Text("ID: ${bulb.id}"),
-                Text("Kelvin: ${bulb.color.kelvin}K"),
-                Text("Brightness: ${bulb.brightness.toInt() * 100}%"),
+                BulbDetail(label: "ID", value: bulb.id),
+                BulbDetail(label: "Kelvin", value: "${bulb.color.kelvin}K"),
               ],
             ),
           ),
@@ -47,8 +45,8 @@ class LightScreen extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.only(bottom: 20),
-                  child: const GroupHeader(
-                    text: "Brightness",
+                  child: GroupHeader(
+                    text: "Brightness: ${(bulb.brightness * 100).toInt()}%",
                     alignment: Alignment.center,
                   ),
                 ),
