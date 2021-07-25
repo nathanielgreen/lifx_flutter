@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../widgets/atoms/button.dart';
 import '../widgets/global/top_bar.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -43,16 +44,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              FutureBuilder<String>(
-                future: getKey(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return SelectableText(snapshot.data.toString());
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
-                  return const CircularProgressIndicator();
-                },
+              Container(
+                margin: const EdgeInsets.only(bottom: 20),
+                child: FutureBuilder<String>(
+                  future: getKey(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return SelectableText(
+                          "LIFX API Key: ${snapshot.data.toString()}");
+                    } else if (snapshot.hasError) {
+                      return Text("${snapshot.error}");
+                    }
+                    return const CircularProgressIndicator();
+                  },
+                ),
               ),
               TextField(
                 controller: textController,
@@ -60,14 +65,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     border: OutlineInputBorder(),
                     hintText: 'Enter a search term'),
               ),
-              ElevatedButton(
-                onPressed: () => setKey(textController.text),
-                child: const Text('Set LIFX API key'),
+              Container(
+                margin: const EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Button(
+                      onClick: () => setKey(textController.text),
+                      text: 'Set LIFX API key',
+                    ),
+                    Button(
+                      onClick: () => setKey(null),
+                      text: 'Clear API Key',
+                    )
+                  ],
+                ),
               ),
-              ElevatedButton(
-                onPressed: () => setKey(null),
-                child: const Text('Clear API Key'),
-              )
             ],
           ),
         ),

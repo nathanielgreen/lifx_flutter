@@ -8,7 +8,7 @@ class LifxClientService {
     final SharedPreferences prefs = await _prefs;
     final key = prefs.getString("LIFX_API_KEY");
     if (key == null) {
-      throw Exception("No API key was found");
+      throw Error.safeToString('No API Key was found');
     }
     return Client(key);
   }

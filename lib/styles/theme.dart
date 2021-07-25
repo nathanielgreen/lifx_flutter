@@ -6,6 +6,8 @@ ThemeData theme() => ThemeData(
       canvasColor: CustomColors.paleYellow,
       primaryColor: CustomColors.paleOrange,
       accentColor: CustomColors.brown,
+      focusColor: CustomColors.brown,
+      highlightColor: CustomColors.brown,
       textTheme: TextTheme(
         headline1: GoogleFonts.sourceSansPro(),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lifx/constants/style.dart';
 
 class LightSwitch extends StatelessWidget {
   const LightSwitch({
@@ -26,7 +27,7 @@ class LightSwitch extends StatelessWidget {
             primary: Colors.white,
             shadowColor: const Color(0xffeeeeee),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14.0),
+              borderRadius: BorderRadius.circular(Borders.cardRadius),
             ),
           ),
           onPressed: onClick,

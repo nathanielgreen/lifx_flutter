@@ -14,30 +14,35 @@ class LightList extends StatelessWidget {
   Widget build(BuildContext context) {
     final setLightPower = Provider.of<LifxClientModel>(context).setLightPower;
     return Consumer<LifxClientModel>(
-      builder: (_, lifx, __) => ListView(
-        children: lifx.bulbsByGroup.map((group) {
-          return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 32),
-            child: Column(
-              children: [
-                GroupHeader(text: group.name),
-                ...group.bulbs
-                    .map(
-                      (bulb) => LightSwitch(
-                        id: bulb.id,
-                        text: bulb.label,
-                        power: bulb.power == "on",
-                        onClick: () => context.beamToNamed('lights/${bulb.id}'),
-                        onToggle: (bool power) =>
-                            setLightPower(bulb.id, power: power),
-                      ),
-                    )
-                    .toList(),
-              ],
+      builder: (_, lifx, __) => lifx.bulbs.isNotEmpty
+          ? ListView(
+              children: lifx.bulbsByGroup.map((group) {
+              return Container(
+                margin: const EdgeInsets.symmetric(horizontal: 32),
+                child: Column(
+                  children: [
+                    GroupHeader(text: group.name),
+                    ...group.bulbs
+                        .map(
+                          (bulb) => LightSwitch(
+                            id: bulb.id,
+                            text: bulb.label,
+                            power: bulb.power == "on",
+                            onClick: () =>
+                                context.beamToNamed('lights/${bulb.id}'),
+                            onToggle: (bool power) =>
+                                setLightPower(bulb.id, power: power),
+                          ),
+                        )
+                        .toList(),
+                  ],
+                ),
+              );
+            }).toList())
+          : const Center(
+              child: Text(
+                  "No bulbs available. Check you've added your API Key in Settings"),
             ),
-          );
-        }).toList(),
-      ),
     );
   }
 }
