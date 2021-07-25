@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 ThemeData theme() => ThemeData(
       primaryColor: const Color(0xffe1d5c9),
       accentColor: const Color(0xffc29250),
-      brightness: Brightness.light,
       textTheme: TextTheme(
         headline1: GoogleFonts.sourceSansPro(),
       ),

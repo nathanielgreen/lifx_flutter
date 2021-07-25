@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LightSwitch extends StatelessWidget {
   const LightSwitch({
     Key? key,
+    required this.id,
     required this.text,
     required this.onClick,
     required this.onToggle,
     required this.power,
   }) : super(key: key);
 
+  final String id;
   final String text;
   final Function() onClick;
   final Function(bool) onToggle;
@@ -21,22 +23,40 @@ class LightSwitch extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             textStyle: const TextStyle(fontSize: 20, color: Colors.blue),
-            primary: const Color(0xFF202224),
+            primary: Colors.white,
+            shadowColor: const Color(0xffeeeeee),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
             ),
           ),
           onPressed: onClick,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 26),
+            padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 26),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(text),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(text,
+                      textAlign: TextAlign.left,
+                      style: GoogleFonts.sourceSansPro(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      )),
+                  Text(
+                    "ID: $id",
+                    style: GoogleFonts.sourceSansPro(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
+                  ),
+                ]),
                 Transform.scale(
                   scale: 0.8,
-                  child: CupertinoSwitch(
-                    activeColor: Theme.of(context).accentColor,
+                  child: Switch(
+                    activeColor: const Color(0xfff6b590),
+                    inactiveThumbColor: const Color(0xff917b7d),
                     value: power,
                     onChanged: onToggle,
                   ),
