@@ -36,7 +36,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopBar(),
+      appBar: topBar("Settings"),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(40.0),

@@ -1,10 +1,11 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:lifx/constants/style.dart';
 
 ThemeData theme() => ThemeData(
-      canvasColor: const Color(0xfffeede5),
-      primaryColor: const Color(0xfff6b590),
-      accentColor: const Color(0xff917b7d),
+      canvasColor: CustomColors.canvas,
+      primaryColor: CustomColors.primary,
+      accentColor: CustomColors.canvas,
       textTheme: TextTheme(
         headline1: GoogleFonts.sourceSansPro(),
       ),
