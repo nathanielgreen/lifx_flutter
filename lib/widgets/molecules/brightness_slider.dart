@@ -15,15 +15,23 @@ class _BrightnessSliderState extends State<BrightnessSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return Slider(
-      value: _currentBrightness,
-      max: 100,
-      divisions: 10,
-      label: _currentBrightness.round().toString(),
-      onChanged: (double value) => setState(() {
-        _currentBrightness = value;
-      }),
-      onChangeEnd: widget.onChangeEnd,
+    return SliderTheme(
+      data: SliderThemeData(
+        activeTrackColor: Theme.of(context).primaryColor,
+        inactiveTrackColor: const Color(0xfff8edec),
+        inactiveTickMarkColor: Theme.of(context).accentColor,
+        thumbColor: Colors.white,
+        trackHeight: 10,
+      ),
+      child: Slider(
+        value: _currentBrightness,
+        max: 100,
+        divisions: 10,
+        onChanged: (double value) => setState(() {
+          _currentBrightness = value;
+        }),
+        onChangeEnd: widget.onChangeEnd,
+      ),
     );
   }
 }

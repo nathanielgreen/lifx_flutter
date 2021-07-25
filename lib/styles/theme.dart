@@ -5,7 +5,7 @@ import 'package:lifx/constants/style.dart';
 ThemeData theme() => ThemeData(
       canvasColor: CustomColors.canvas,
       primaryColor: CustomColors.primary,
-      accentColor: CustomColors.canvas,
+      accentColor: CustomColors.accent,
       textTheme: TextTheme(
         headline1: GoogleFonts.sourceSansPro(),
       ),
