@@ -13,12 +13,13 @@ class GroupHeader extends StatelessWidget {
   Widget build(BuildContext context) => Align(
         alignment: Alignment.centerLeft,
         child: Container(
-          margin: const EdgeInsets.only(top: 24, bottom: 12),
+          margin: const EdgeInsets.only(top: 30),
           child: Text(
             text,
             style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
+              color: const Color(0xff949494),
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
