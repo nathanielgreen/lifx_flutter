@@ -26,19 +26,19 @@ class LightSwitch extends StatelessWidget {
             primary: Colors.white,
             shadowColor: const Color(0xffeeeeee),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
+              borderRadius: BorderRadius.circular(14.0),
             ),
           ),
           onPressed: onClick,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 26),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 26),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(text,
                       textAlign: TextAlign.left,
-                      style: GoogleFonts.sourceSansPro(
+                      style: GoogleFonts.lato(
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
                         fontSize: 18,
@@ -55,8 +55,8 @@ class LightSwitch extends StatelessWidget {
                 Transform.scale(
                   scale: 0.8,
                   child: Switch(
-                    activeColor: const Color(0xfff6b590),
-                    inactiveThumbColor: const Color(0xff917b7d),
+                    activeColor: Theme.of(context).primaryColor,
+                    inactiveThumbColor: Theme.of(context).accentColor,
                     value: power,
                     onChanged: onToggle,
                   ),
