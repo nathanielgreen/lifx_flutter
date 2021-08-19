@@ -11,6 +11,10 @@ class BulbsRepository {
     required this.lifxProvider,
   });
 
+  Future<void> updateKey(String key) async {
+    await authProvider.setApiKey(key);
+  }
+
   Future<List<Bulb>> getBulbs() async {
     final String? key = await authProvider.readApiKey();
     if (key == null) throw "No API Key Found";
