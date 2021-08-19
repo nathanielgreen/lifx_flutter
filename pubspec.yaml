@@ -26,6 +26,8 @@ dependencies:
   cupertino_icons: ^1.0.3
   flutter:
     sdk: flutter
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
   google_fonts: ^2.1.0
   lifx_http_api: ^0.0.8
   lint: ^1.5.3
