@@ -7,6 +7,11 @@ class SettingsRepository {
     required this.authProvider,
   });
 
+  Future<String> getKey() async {
+    final key = await authProvider.readApiKey();
+    return key;
+  }
+
   Future<String> updateKey(String key) async {
     await authProvider.setApiKey(key);
     final newKey = await authProvider.readApiKey();

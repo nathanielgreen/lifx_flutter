@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+
 import 'package:lifx/data/settings_repository.dart';
 
 class SettingsCubit extends Cubit<String> {
@@ -6,6 +7,15 @@ class SettingsCubit extends Cubit<String> {
 
   SettingsCubit(String initialState, this._settingsRepository)
       : super(initialState);
+
+  Future<void> initialize() async {
+    try {
+      final apiKey = await _settingsRepository.getKey();
+      emit(apiKey);
+    } catch (e) {
+      print(e);
+    }
+  }
 
   Future<void> setKey(String key) async {
     try {

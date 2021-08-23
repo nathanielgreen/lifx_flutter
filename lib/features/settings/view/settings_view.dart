@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:beamer/beamer.dart';
-import '../settings.dart';
 import '../../../widgets/atoms/button.dart';
 import '../../../widgets/global/top_bar.dart';
+import '../settings.dart';
 
 class SettingsView extends StatefulWidget {
   @override

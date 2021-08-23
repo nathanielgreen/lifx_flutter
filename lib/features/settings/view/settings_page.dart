@@ -15,7 +15,7 @@ class SettingsPage extends StatelessWidget {
       create: (_) => SettingsCubit(
         '',
         SettingsRepository(authProvider: AuthProvider()),
-      ),
+      )..initialize(),
       child: SettingsView(),
     );
   }
