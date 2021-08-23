@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:beamer/beamer.dart';
-import 'package:lifx/locations/lights_location.dart';
+
+import 'package:lifx/data/auth_provider.dart';
+import 'package:lifx/data/bulbs_repository.dart';
+import 'package:lifx/data/lifx_provider.dart';
 import 'package:lifx/features/settings/settings.dart';
-import 'package:lifx/providers/lifx_client_model.dart';
 import 'package:lifx/styles/theme.dart' show theme;
-import 'package:provider/provider.dart';
+
 import './widgets/global/bottom_bar.dart';
 
 void main() {
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_) => LifxClientModel()),
-    ],
-    child: MyApp(),
-  ));
+  runApp(
+    RepositoryProvider(
+      create: (context) => BulbsRepository(
+        lifxProvider: LifxProvider(),
+        authProvider: AuthProvider(),
+      ),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +36,6 @@ class MyApp extends StatelessWidget {
               routerDelegate: BeamerDelegate(
                 locationBuilder: BeamerLocationBuilder(
                   beamLocations: [
-                    LightsLocation(),
                     SettingsLocation(),
                   ],
                 ),
