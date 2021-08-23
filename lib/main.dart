@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 import 'package:lifx/locations/lights_location.dart';
-import 'package:lifx/locations/settings_location.dart';
+import 'package:lifx/features/settings/settings.dart';
 import 'package:lifx/providers/lifx_client_model.dart';
 import 'package:lifx/styles/theme.dart' show theme;
 import 'package:provider/provider.dart';

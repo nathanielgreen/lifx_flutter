@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:beamer/beamer.dart';
-import '../../widgets/atoms/button.dart';
-import '../../widgets/global/top_bar.dart';
+import '../settings.dart';
+import '../../../widgets/atoms/button.dart';
+import '../../../widgets/global/top_bar.dart';
 
 class SettingsView extends StatefulWidget {
   @override
@@ -28,20 +30,11 @@ class _SettingsViewState extends State<SettingsView> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                child: FutureBuilder<String>(
-                  future: getKey(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return SelectableText(
-                          "LIFX API Key: ${snapshot.data.toString()}");
-                    } else if (snapshot.hasError) {
-                      return Text("${snapshot.error}");
-                    }
-                    return const CircularProgressIndicator();
-                  },
-                ),
-              ),
+                  margin: const EdgeInsets.only(bottom: 20),
+                  child: BlocBuilder<SettingsCubit, String>(
+                      builder: (context, state) {
+                    return Text('Key: $state');
+                  })),
               TextField(
                 controller: textController,
                 decoration: InputDecoration(
@@ -56,15 +49,12 @@ class _SettingsViewState extends State<SettingsView> {
                   children: [
                     Button(
                       onClick: () {
-                        setKey(textController.text);
-                        Beamer.of(context).beamToNamed('lights');
+                        context
+                            .read<SettingsCubit>()
+                            .setKey(textController.text);
                       },
                       text: 'Set LIFX API key',
                     ),
-                    Button(
-                      onClick: () => setKey(null),
-                      text: 'Clear API Key',
-                    )
                   ],
                 ),
               ),
