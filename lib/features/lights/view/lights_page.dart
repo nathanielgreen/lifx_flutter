@@ -18,7 +18,7 @@ class LightsPage extends StatelessWidget {
           authProvider: AuthProvider(),
           lifxProvider: LifxProvider(),
         ),
-      ),
+      )..getLights(),
       child: LightsView(),
     );
   }
