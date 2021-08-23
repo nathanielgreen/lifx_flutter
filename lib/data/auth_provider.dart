@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 
 class AuthProvider {
-  Future<String?> readApiKey() async {
+  Future<String> readApiKey() async {
     final box = await Hive.openBox('LIFX_BOX');
     final key = await box.get('LIFX_API_KEY') as String;
     return key;
