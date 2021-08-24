@@ -6,7 +6,6 @@ import 'package:lifx_http_api/lifx_http_api.dart';
 
 part 'lights_state.dart';
 
-
 class LightsCubit extends Cubit<LightsState> {
   final LightsRepository _lightsRepository;
 
@@ -18,6 +17,7 @@ class LightsCubit extends Cubit<LightsState> {
       final bulbs = await _lightsRepository.getBulbs();
       emit(LightsLoaded(bulbs));
     } catch (e) {
+      emit(LightsError(e.toString()));
       print(e);
     }
   }
