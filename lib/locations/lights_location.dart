@@ -17,7 +17,7 @@ class LightsLocation extends BeamLocation {
         lifxProvider: LifxProvider(),
       ))
         ..getLights(),
-      child: LightsView(),
+      child: navigator,
     );
   }
 

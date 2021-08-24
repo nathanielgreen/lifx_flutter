@@ -28,7 +28,8 @@ class LightList extends StatelessWidget {
                     text: bulb.label,
                     power: bulb.power == "on",
                     onClick: () {
-                      Beamer.of(context).beamToNamed('lights/${bulb.id}');
+                      print('hi');
+                      context.beamToNamed('/lights/${bulb.id}');
                     },
                     onToggle: (bool power) => print(bool),
                   ),
