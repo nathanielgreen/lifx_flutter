@@ -17,6 +17,9 @@ class LightsView extends StatelessWidget {
         if (state is LightsLoaded) {
           return LightList(bulbGroups: lightsToBulbGroup(state.lights));
         }
+        if (state is LightsError) {
+          return Text('ERROR: ${state.message}');
+        }
         return const CircularProgressIndicator();
       })),
     );
