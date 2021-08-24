@@ -6,7 +6,7 @@ import 'package:lifx/data/lifx_repository.dart';
 
 import './lights_cubit.dart';
 
-class MockLightsRepository extends Mock implements LifxRepository {}
+class MockLifxRepository extends Mock implements LifxRepository {}
 
 final mockBulb = Bulb(
   uuid: 'uuid',
@@ -24,11 +24,11 @@ void main() {
     late LightsCubit lightsCubit;
 
     setUp(() {
-      final mockLightsRepository = MockLightsRepository();
-      when(() => mockLightsRepository.getBulbs())
+      final mockLifxRepository = MockLifxRepository();
+      when(() => mockLifxRepository.getBulbs())
           .thenAnswer((_) => Future.value([mockBulb]));
 
-      lightsCubit = LightsCubit(mockLightsRepository);
+      lightsCubit = LightsCubit(mockLifxRepository);
     });
 
     test('initial state is an empty list', () {
