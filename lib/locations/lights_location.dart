@@ -9,18 +9,15 @@ import 'package:lifx/data/lights_repository.dart';
 import '../features/lights/lights.dart';
 
 class LightsLocation extends BeamLocation {
-  final LightsCubit _lightsCubit = LightsCubit(
-    LightsRepository(
-      authProvider: AuthProvider(),
-      lifxProvider: LifxProvider(),
-    ),
-  )..getLights();
-
   @override
   Widget builder(BuildContext context, Widget navigator) {
-    return BlocProvider.value(
-      value: _lightsCubit,
-      child: navigator,
+    return BlocProvider(
+      create: (context) => LightsCubit(LightsRepository(
+        authProvider: AuthProvider(),
+        lifxProvider: LifxProvider(),
+      ))
+        ..getLights(),
+      child: LightsView(),
     );
   }
 

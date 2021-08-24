@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
-import 'package:lifx/features/lights/lights.dart';
+import 'package:lifx/locations/locations.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({required this.beamerKey});
