@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:beamer/beamer.dart';
 import 'package:lifx/utils/lights_to_bulb_group.dart' show BulbGroup;
 import 'package:lifx/widgets/atoms/group_header.dart';
 import 'package:lifx/widgets/molecules/light_switch.dart';
@@ -26,7 +27,9 @@ class LightList extends StatelessWidget {
                     id: bulb.id,
                     text: bulb.label,
                     power: bulb.power == "on",
-                    onClick: () => null,
+                    onClick: () {
+                      Beamer.of(context).beamToNamed('lights/${bulb.id}');
+                    },
                     onToggle: (bool power) => print(bool),
                   ),
                 )
