@@ -6,9 +6,7 @@ import 'package:lifx/data/auth_provider.dart';
 import 'package:lifx/data/lifx_provider.dart';
 import 'package:lifx/data/lights_repository.dart';
 
-import '../lights.dart';
-import './light_view.dart';
-import './lights_view.dart';
+import '../features/lights/lights.dart';
 
 class LightsLocation extends BeamLocation {
   final LightsCubit _lightsCubit = LightsCubit(

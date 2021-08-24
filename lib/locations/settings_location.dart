@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
-import './settings_page.dart';
+
+import '../features/settings/settings.dart';
 
 class SettingsLocation extends BeamLocation {
   @override
@@ -8,10 +9,11 @@ class SettingsLocation extends BeamLocation {
 
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) => [
-        BeamPage(
-          key: const ValueKey('settings'),
-          title: 'settings',
-          child: const SettingsPage(),
-        ),
+        if (state.uri.pathSegments.contains('settings'))
+          BeamPage(
+            key: const ValueKey('settings'),
+            title: 'settings',
+            child: const SettingsPage(),
+          ),
       ];
 }

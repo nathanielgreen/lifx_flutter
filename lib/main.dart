@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'package:lifx/features/settings/settings.dart';
-import 'package:lifx/features/lights/lights.dart';
+import 'package:lifx/locations/locations.dart';
 import 'package:lifx/styles/theme.dart' show theme;
 
 import './widgets/global/bottom_bar.dart';
