@@ -1,26 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:lifx/data/auth_provider.dart';
-import 'package:lifx/data/lifx_provider.dart';
-import 'package:lifx/data/lights_repository.dart';
 
 import '../features/lights/lights.dart';
 
-class LightsLocation extends BeamLocation {
-  @override
-  Widget builder(BuildContext context, Widget navigator) {
-    return BlocProvider(
-      create: (context) => LightsCubit(LightsRepository(
-        authProvider: AuthProvider(),
-        lifxProvider: LifxProvider(),
-      ))
-        ..getLights(),
-      child: navigator,
-    );
-  }
-
+class LightsLocation extends BeamLocation<BeamState> {
   @override
   List<String> get pathBlueprints => ['/lights/:lightId'];
 
