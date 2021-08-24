@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../features/lights/lights.dart';
 
 class LightsLocation extends BeamLocation<BeamState> {
+  @override
+  Widget builder(BuildContext context, Widget navigator) {
+    return BlocProvider.value(
+      value: BlocProvider.of<LightsCubit>(context)..getLights(),
+      child: navigator,
+    );
+  }
+
   @override
   List<String> get pathBlueprints => ['/lights/:lightId'];
 
