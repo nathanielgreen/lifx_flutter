@@ -12,16 +12,17 @@ class LightsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
       appBar: topBar("All Lights"),
-      body: Center(child:
-          BlocBuilder<LightsCubit, LightsState>(builder: (context, state) {
-        if (state is LightsLoaded) {
-          return LightList(bulbGroups: lightsToBulbGroup(state.lights));
-        }
-        if (state is LightsError) {
-          return Text('ERROR: ${state.message}');
-        }
-        return const CircularProgressIndicator();
-      })),
+      body: Center(
+        child: BlocBuilder<LightsCubit, LightsState>(builder: (context, state) {
+          if (state is LightsLoaded) {
+            return LightList(bulbGroups: lightsToBulbGroup(state.lights));
+          }
+          if (state is LightsError) {
+            return Text('ERROR: ${state.message}');
+          }
+          return const CircularProgressIndicator();
+        }),
+      ),
     );
   }
 }

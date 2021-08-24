@@ -1,13 +1,12 @@
 import 'package:lifx_http_api/lifx_http_api.dart';
 import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:bloc_test/bloc_test.dart';
 
-import 'package:lifx/data/lights_repository.dart';
+import 'package:lifx/data/lifx_repository.dart';
 
 import './lights_cubit.dart';
 
-class MockLightsRepository extends Mock implements LightsRepository {}
+class MockLightsRepository extends Mock implements LifxRepository {}
 
 final mockBulb = Bulb(
   uuid: 'uuid',

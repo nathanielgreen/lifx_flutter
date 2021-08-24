@@ -23,8 +23,7 @@ class LifxRepository {
   }
 
   Future<List<Bulb>> getBulbs() async {
-    final String? key = await authProvider.readApiKey();
-    if (key == null) throw "No API Key Found";
+    final String key = await authProvider.readApiKey();
     final List<Bulb>? bulbs = await lifxProvider.readLights(key);
     if (bulbs == null) throw "No bulbs found";
     return bulbs;
