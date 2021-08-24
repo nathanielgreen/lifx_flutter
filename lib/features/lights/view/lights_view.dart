@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:lifx/widgets/global/top_bar.dart';
 import 'package:lifx/features/lights/lights.dart';
+import 'package:lifx/utils/lights_to_bulb_group.dart' show lightsToBulbGroup;
+import 'package:lifx/widgets/organisms/lights_list.dart';
 
 class LightsView extends StatelessWidget {
   @override
@@ -10,11 +12,13 @@ class LightsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
       appBar: topBar("All Lights"),
-      body: Center(child: BlocBuilder<LightsCubit, LightsState>(
-        builder: (context, state) {
-          return Text('$state');
-        },
-      )),
+      body: Center(child:
+          BlocBuilder<LightsCubit, LightsState>(builder: (context, state) {
+        if (state is LightsLoaded) {
+          return LightList(bulbGroups: lightsToBulbGroup(state.lights));
+        }
+        return const CircularProgressIndicator();
+      })),
     );
   }
 }
