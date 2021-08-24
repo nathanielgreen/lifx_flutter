@@ -16,7 +16,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final routerDelegate = BeamerDelegate(
-    initialPath: '/home',
+    initialPath: '/lights',
     locationBuilder: SimpleLocationBuilder(
       routes: {
         '*': (context, state) {
