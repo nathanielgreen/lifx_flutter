@@ -2,17 +2,24 @@ import 'package:lifx/data/auth_provider.dart';
 import 'package:lifx/data/lifx_provider.dart';
 import 'package:lifx_http_api/lifx_http_api.dart';
 
-class LightsRepository {
+class LifxRepository {
   final AuthProvider authProvider;
   final LifxProvider lifxProvider;
 
-  LightsRepository({
+  LifxRepository({
     required this.authProvider,
     required this.lifxProvider,
   });
 
-  Future<void> updateKey(String key) async {
+  Future<String?> getKey() async {
+    final key = await authProvider.readApiKey();
+    return key;
+  }
+
+  Future<String> updateKey(String key) async {
     await authProvider.setApiKey(key);
+    final newKey = await authProvider.readApiKey();
+    return newKey;
   }
 
   Future<List<Bulb>> getBulbs() async {
