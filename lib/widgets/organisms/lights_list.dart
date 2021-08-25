@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:lifx/utils/lights_to_bulb_group.dart' show BulbGroup;
 import 'package:lifx/widgets/atoms/group_header.dart';
 import 'package:lifx/widgets/molecules/light_switch.dart';
+import 'package:lifx/features/lights/lights.dart';
 
 class LightList extends StatelessWidget {
   final List<BulbGroup> bulbGroups;
@@ -28,10 +31,11 @@ class LightList extends StatelessWidget {
                     text: bulb.label,
                     power: bulb.power == "on",
                     onClick: () {
-                      print('hi');
                       context.beamToNamed('/lights/${bulb.id}');
                     },
-                    onToggle: (bool power) => print(bool),
+                    onToggle: (bool power) =>
+                        BlocProvider.of<LightsCubit>(context)
+                            .togglePower(bulb.id, power),
                   ),
                 )
                 .toList(),

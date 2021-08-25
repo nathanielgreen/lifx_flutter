@@ -20,4 +20,24 @@ class LightsCubit extends Cubit<LightsState> {
       print(e);
     }
   }
+
+  Future<void> updateBrightness(String id, double brightness) async {
+    try {
+      final bulbs =
+          await _lifxRepository.updateLight(id, brightness: brightness);
+    } catch (e) {
+      emit(LightsError(e.toString()));
+      print(e);
+    }
+  }
+
+  Future<void> togglePower(String id, bool power) async {
+    try {
+      final powerAsString = power ? "on" : "off";
+      await _lifxRepository.updateLight(id, power: powerAsString);
+    } catch (e) {
+      emit(LightsError(e.toString()));
+      print(e);
+    }
+  }
 }

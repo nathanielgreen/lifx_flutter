@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lifx_http_api/lifx_http_api.dart';
 
 import 'package:lifx/widgets/atoms/group_header.dart';
 import 'package:lifx/widgets/molecules/bulb_detail.dart';
 import 'package:lifx/widgets/molecules/brightness_slider.dart';
+import 'package:lifx/features/lights/lights.dart';
 
 class LightSettings extends StatelessWidget {
   final Bulb bulb;
@@ -65,7 +67,9 @@ class LightSettings extends StatelessWidget {
               child: RotatedBox(
                 quarterTurns: 3,
                 child: BrightnessSlider(
-                  onChangeEnd: (double brightness) => print(brightness),
+                  onChangeEnd: (double brightness) =>
+                      BlocProvider.of<LightsCubit>(context)
+                          .updateBrightness(bulb.id, brightness),
                 ),
               ),
             ),
