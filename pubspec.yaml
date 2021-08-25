@@ -29,7 +29,7 @@ dependencies:
   hive: ^2.0.4
   hive_flutter: ^1.1.0
   google_fonts: ^2.1.0
-  lifx_http_api: ^0.0.9
+  lifx_http_api: ^0.0.10
   lint: ^1.5.3
   provider: ^5.0.0
   shared_preferences: ^2.0.6

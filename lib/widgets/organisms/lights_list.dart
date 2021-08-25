@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lifx_http_api/lifx_http_api.dart' show LifxPower;
 
 import 'package:lifx/utils/lights_to_bulb_group.dart' show BulbGroup;
 import 'package:lifx/widgets/atoms/group_header.dart';
@@ -29,9 +30,10 @@ class LightList extends StatelessWidget {
                   (bulb) => LightSwitch(
                     id: bulb.id,
                     text: bulb.label,
-                    power: bulb.power == "on",
+                    power: bulb.power == LifxPower.on,
                     onClick: () {
                       context.beamToNamed('/lights/${bulb.id}');
+                      print(bulb.power);
                     },
                     onToggle: (bool power) =>
                         BlocProvider.of<LightsCubit>(context)
