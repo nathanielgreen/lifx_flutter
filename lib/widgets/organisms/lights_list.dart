@@ -31,10 +31,7 @@ class LightList extends StatelessWidget {
                     id: bulb.id,
                     text: bulb.label,
                     power: bulb.power == LifxPower.on,
-                    onClick: () {
-                      context.beamToNamed('/lights/${bulb.id}');
-                      print(bulb.power);
-                    },
+                    onClick: () => context.beamToNamed('/lights/${bulb.id}'),
                     onToggle: (bool power) =>
                         BlocProvider.of<LightsCubit>(context)
                             .togglePower(bulb.id, power),

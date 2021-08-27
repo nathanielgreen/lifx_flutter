@@ -14,7 +14,7 @@ class LightsView extends StatelessWidget {
       appBar: topBar("All Lights"),
       body: Center(
         child: BlocBuilder<LightsCubit, LightsState>(builder: (context, state) {
-          if (state is LightsLoaded) {
+          if (state is LightsLoaded || state is LightsUpdated) {
             return LightList(bulbGroups: lightsToBulbGroup(state.lights));
           }
           if (state is LightsError) {

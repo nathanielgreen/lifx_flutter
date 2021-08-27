@@ -13,9 +13,9 @@ final mockBulb = Bulb(
   id: 'id',
   label: 'Mock Bulb',
   connected: true,
-  group: Group(id: 'group-id', name: 'Mock Group'),
+  group: LifxGroup(id: 'group-id', name: 'Mock Group'),
   brightness: 100,
-  power: 'on',
+  power: LifxPower.on,
   color: LifxColor(hue: 1.0, saturation: 1.0, kelvin: 2000),
 );
 

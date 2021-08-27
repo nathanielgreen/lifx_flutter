@@ -29,7 +29,7 @@ dependencies:
   hive: ^2.0.4
   hive_flutter: ^1.1.0
   google_fonts: ^2.1.0
-  lifx_http_api: ^0.0.10
+  lifx_http_api: ^0.0.11
   lint: ^1.5.3
   provider: ^5.0.0
   shared_preferences: ^2.0.6
@@ -39,6 +39,8 @@ dependencies:
   flutter_bloc: ^7.1.0
   equatable: ^2.0.3
   mocktail: ^0.1.4
+  logger: ^1.0.0
+  freezed: ^0.14.2
 
 dev_dependencies:
   flutter_test:
