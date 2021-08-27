@@ -36,9 +36,13 @@ class LightsCubit extends Cubit<LightsState> {
   Future<void> togglePower(String id, bool power) async {
     try {
       final powerAsString = power ? "on" : "off";
+      final powerAsLifxPower = power ? LifxPower.on : LifxPower.off;
       await _lifxRepository.updateLight(id, power: powerAsString);
-      final bulbs = await _lifxRepository.getBulbs();
-      emit(LightsUpdated(bulbs));
+      final lightIndex = state.lights.indexWhere((lights) => lights.id == id);
+      final bulb = state.lights.removeAt(lightIndex);
+      final newBulb = bulb.copyWith(power: powerAsLifxPower);
+      state.lights.add(newBulb);
+      emit(LightsUpdated(state.lights));
     } catch (e) {
       emit(LightsError(e.toString()));
       print(e);
