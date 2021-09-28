@@ -23,7 +23,7 @@ class BulbDetail extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
+              SelectableText(
                 value,
                 style: const TextStyle(color: Colors.black),
               ),

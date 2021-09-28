@@ -29,10 +29,17 @@ class LifxRepository {
     return bulbs;
   }
 
-  Future<void> updateLight(String id,
-      {double? brightness, String? power}) async {
-    final String key = await authProvider.readApiKey();
-    final client = Client(key);
-    await client.setState(id, brightness: brightness, power: power);
+  Future<void> updateLight(
+    String id, {
+    double? brightness,
+    String? power,
+  }) async {
+    try {
+      final String key = await authProvider.readApiKey();
+      final client = Client(key);
+      await client.setState(id, brightness: brightness, power: power);
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }

@@ -27,9 +27,12 @@ class _BrightnessSliderState extends State<BrightnessSlider> {
         value: _currentBrightness,
         max: 100,
         divisions: 10,
-        onChanged: (double value) => setState(() {
-          _currentBrightness = value;
-        }),
+        onChanged: (double value) {
+          print(value);
+          setState(() {
+            _currentBrightness = value;
+          });
+        },
         onChangeEnd: widget.onChangeEnd,
       ),
     );

@@ -26,7 +26,7 @@ class LightsCubit extends Cubit<LightsState> {
   Future<void> updateBrightness(String id, double brightness) async {
     try {
       final bulbs =
-          await _lifxRepository.updateLight(id, brightness: brightness);
+          await _lifxRepository.updateLight(id, brightness: brightness / 100);
     } catch (e) {
       emit(LightsError(e.toString()));
       print(e);
